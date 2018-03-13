@@ -42,6 +42,9 @@ def load_settings():
 	animation_path			= getSetting('animation_path', 'Animation').decode('utf-8')
 	documentary_path		= getSetting('documentary_path', 'Documentary').decode('utf-8')
 	anime_path				= getSetting('anime_path', 'Anime').decode('utf-8')
+	kids_path		= getSetting('kids_path', 'Kids').decode('utf-8')
+	concert_path				= getSetting('concert_path', 'Concert').decode('utf-8')
+	theater_path		= getSetting('theater_path', 'Theater').decode('utf-8')
 
 	from settings import Settings
 	settings = Settings(base_path,
@@ -49,6 +52,9 @@ def load_settings():
 						animation_path			= animation_path,
 						documentary_path		= documentary_path,
 						anime_path				= anime_path
+						kids_path			= kids_path,
+						concert_path		= concert_path,
+						theater_path				= theater_path
 						)
 
 	settings.hdclub_passkey			= getSetting('hdclub_passkey')
@@ -88,6 +94,10 @@ def load_settings():
 	settings.anime_save				= getSetting('anime_save') == 'true'
 	settings.tvshows_save			= getSetting('tvshows_save') == 'true'
 	settings.animation_tvshows_save = getSetting('animation_tvshows_save') == 'true'
+	settings.kids_save				= getSetting('kids_save') == 'true'
+	settings.concert_save			= getSetting('concert_save') == 'true'
+	settings.documentary_tvshows_save = getSetting('documentary_tvshows_save') == 'true'
+	settings.theater_save			= getSetting('theater_save') == 'true'
 
 	settings.torrent_path			= getSetting('torrent_path')
 
