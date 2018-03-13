@@ -22,7 +22,7 @@
   <extension point="kodi.context.item">
     <menu id="kodi.core.main">
       <menu>
-        <label>[COLOR=FF008000]Media[/COLOR] [COLOR=FFA0522D]Aggregator[/COLOR]</label>
+        <label>Media Aggregator Fork</label>
         <item library="context.py">
           <label>ВЫБОР ИСТОЧНИКОВ...</label>
           <visible>[ StringCompare(ListItem.dbtype,movie) | StringCompare(ListItem.dbtype,episode) ] + StringCompare(ListItem.FileExtension,strm)</visible>
