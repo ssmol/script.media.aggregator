@@ -19,7 +19,7 @@ class FakeProgressDlg(object):
 	def update(self, *args):
 		pass
 
-_addon_name = '[COLOR=FF008000]Media[/COLOR] [COLOR=FFA0522D]Aggregator[/COLOR]'
+_addon_name = 'Media Aggregator Fork'
 
 class Settings:
 	# feed=dl&

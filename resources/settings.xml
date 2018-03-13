@@ -10,7 +10,7 @@
         <setting label="Сериалы" 		type="bool"   id="tvshows_save" 		default="true"/>
         <setting label="Анимационные сериалы" 	type="bool"   id="animation_tvshows_save" 	default="true"/>
 <!--      <setting label="Первая помощь" type="lsep"/>
-        <setting label="Очистка дубликатов фильмов" type="action" action="RunPlugin(plugin://script.media.aggregator/?action=clean_movies)"/>
+        <setting label="Очистка дубликатов фильмов" type="action" action="RunPlugin(plugin://script.media.aggregatorfork/?action=clean_movies)"/>
 -->    </category>
 
     <category label="Дополнительно">

@@ -124,7 +124,7 @@ class Runner(object):
 	def get_addon_path():
 		try:
 			import xbmcaddon
-			_ADDON_NAME = 'script.media.aggregator'
+			_ADDON_NAME = 'script.media.aggregatorfork'
 			_addon      = xbmcaddon.Addon(id=_ADDON_NAME)
 			path = _addon.getAddonInfo('path').decode('utf-8')
 			if path == 'Unavailable':
@@ -292,7 +292,7 @@ def test_get_relative_torrent_files_list(tr):
 if __name__ == '__main__':
 	tr = TestRunner()
 	tr.resume_file = r'c:\Bin\626bbfbb61755200069486609d66e53146483ebe.resume'
-	tr.torrent_path = r'c:\Users\vd\AppData\Roaming\Kodi\userdata\addon_data\script.media.aggregator\nnmclub\507983.torrent'
+	tr.torrent_path = r'c:\Users\vd\AppData\Roaming\Kodi\userdata\addon_data\script.media.aggregatorfork\nnmclub\507983.torrent'
 
 	test_resume(tr)
 
