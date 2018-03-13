@@ -23,7 +23,7 @@ except ImportError:
 
 import xml.etree.ElementTree as ET
 
-_ADDON_NAME =   'script.media.aggregatorfork'
+_ADDON_NAME =   'script.media.aggregator'
 try:
 	_addon      =   xbmcaddon.Addon(id=_ADDON_NAME)
 	_addondir   =   xbmc.translatePath(_addon.getAddonInfo('profile')).decode('utf-8')
@@ -118,7 +118,7 @@ def call_bg(action, params = {}):
 	for key, value in params.iteritems(): 
 		if isinstance(value, unicode):
 			params[key] = value.encode('utf-8')
-	url = 'plugin://script.media.aggregatorfork/?' + urllib.urlencode(params)
+	url = 'plugin://script.media.aggregator/?' + urllib.urlencode(params)
 	xbmc.executebuiltin('RunPlugin("%s")' % url)
 
 def update_case():
@@ -360,7 +360,7 @@ def add_media(title, imdb, settings):
 
 						xbmc.executebuiltin('Container.Refresh')
 
-						url = 'plugin://script.media.aggregatorfork/?' + urllib.urlencode(
+						url = 'plugin://script.media.aggregator/?' + urllib.urlencode(
 							{'action': 'add_media',
 								'title': title.encode('utf-8'),
 								'imdb': imdb,
@@ -413,7 +413,7 @@ def create_mark_file():
 				f.write('test')
 
 			if filesystem.exists(path):
-				url = 'https://github.com/vadyur/script.media.aggregatorfork/releases/download/ver_0.15.2/version_latest'
+				url = 'https://github.com/vadyur/script.media.aggregator/releases/download/ver_0.15.2/version_latest'
 				response = urllib2.urlopen(url)
 				log.debug(response.read())
 		except BaseException as e:
