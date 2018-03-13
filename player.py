@@ -989,6 +989,18 @@ def action_show_library(params):
 			if 'animtv' in self.category:
 				return 'Animation TVShows' not in item['file']
 
+			if 'documentarytv' in self.category:
+				return 'Documentary TVShows' not in item['file']
+
+			if 'kids' in self.category:
+				return 'Kids' not in item['file']
+
+			if 'concert' in self.category:
+				return 'Concert' not in item['file']
+
+			if 'theater' in self.category:
+				return 'Theater' not in item['file']
+
 			return True
 
 		def full_listing(self):
