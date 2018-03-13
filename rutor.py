@@ -61,7 +61,7 @@ class DescriptionParser(DescriptionParserBase):
 			u'Сюжет фильма:': u'plot',
 			u'Продолжительность:': u'runtime',
 			u'Качество:': u'format',
-			#u'Производство:': u'country_studio',
+			u'Производство:': u'country_studio',
 			u'Страна:': u'country',
 			u'Студия:': u'studio',
 			u'Видео:': u'video',
@@ -439,6 +439,13 @@ def run(settings):
 	if settings.tvshows_save:
 		write_tvshows(get_rss_url(4), settings.tvshow_path(), settings)
 
+	if settings.movies_save:
+		write_movies_rss(get_rss_url(5), settings.movies_path(), settings)
+
+	if settings.documentary_tvshows_save:
+		write_tvshows(get_rss_url(12), settings.documentary_tvshow_path(), settings)
+
+
 
 def get_magnet_link(url):
 	r = requests.get(real_url(url, settings))
@@ -621,6 +628,12 @@ def search_generate(what, imdb, settings, path_out):
 		url = 'http://rutor.info/search/0/4/010/2/' + imdb
 		result4 = search_results(imdb, settings, url)
 		count += make_search_strms(result4, settings, 'tvshow', settings.tvshow_path(), path_out)
+
+	if settings.documentary_tvshows_save and count == 0:
+		url = 'http://rutor.info/search/0/12/010/2/' + imdb
+		result5 = search_results(imdb, settings, url)
+		with filesystem.save_make_chdir_context(settings.documentary_tvshow_path()):
+			count += make_search_strms(result5, settings, 'tvshow', path_out)
 
 	if settings.movies_save and count == 0:
 		# 0/5/000/0 - Наше кино, поиск по названию в разделе

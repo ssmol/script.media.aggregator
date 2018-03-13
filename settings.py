@@ -48,6 +48,10 @@ class Settings:
 	             anime_save			= True,
 	             tvshows_save		= True,
 	             animation_tvshows_save = True,
+                 documentary_tvshows_save = True,
+                 concert_save = True, 
+                 kids_save = True,
+                 theater_save = True,
 	             torrent_path        = '',
 				 addon_data_path	 = '',
 				 kp_googlecache     = False,
@@ -110,6 +114,10 @@ class Settings:
 		self.tvshows_save 			= tvshows_save
 		self.animation_tvshows_save = animation_tvshows_save
 		self.torrent_path           = torrent_path
+		self.documentary_tvshows_save = documentary_tvshows_save
+		self.concert_save = concert_save
+		self.kids_save = kids_save
+		self.theater_save = theater_save
 		self.addon_data_path		= addon_data_path
 
 		self.kp_googlecache			= kp_googlecache
@@ -155,6 +163,18 @@ class Settings:
 
 	def tvshow_path(self):
 		return filesystem.join(self.__base_path, 'TVShows')
+
+	def documentary_tvshow_path(self):
+		return filesystem.join(self.__base_path, 'Documentary TVShows')
+
+	def concert_path(self):
+		return filesystem.join(self.__base_path, 'Concert')
+
+	def kids_path(self):
+		return filesystem.join(self.__base_path, 'Kids')
+
+	def theater_path(self):
+		return filesystem.join(self.__base_path, 'Theater')
 
 	def torrents_path(self):
 		return self.torrent_path if self.torrent_path else self.addon_data_path

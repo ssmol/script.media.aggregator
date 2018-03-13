@@ -25,8 +25,14 @@ import tvshowapi
 _BASE_URL = 'http://nnm-club.me/forum/'
 _NEXT_PAGE_SUFFIX = '&start='
 
-tvshow_ids = '1140,1141,1142,1144,1195,1196,1242,1265,1288,1289,1290,1300,768,770,771,772,773,774,775,776,777,778,779,782,783,784,785,786,787,788,803,804,922'
-movie_ids = '1296,227,954'
+tvshow_ids = '1221,1220,1219,768,1220,496,769,1288,787,1196,1141,786,776,1265,1242,1289,1140,782,1142,784,1195,783,1144,1290,1300,770,922,799,800,791,798,797,790,793,794,798,796,792,795,683,573,501,919,566,498,985,720,987,664,497,721,719,1229,1228,849,949,665,986,666,1230,722,1120,920,570,499'
+movie_ids = '1293,1294,1296,270,218,219,954,320,677,1177,319,678,885,908,909,910,911,912,221,222,882,225,226,227,682,694,884,693,321,255,906'
+animation_tvshow_ids = '232,658'
+animation_ids = '661,730,732,230,659,231'
+concert_ids = '258,955'
+documentary_tvshow_ids = '706,577,894,578,580,579,953,581,806,714,761,809,924,812,590,591,588,589,598,652,596,600,599,956,959,1295,597,819,594,593,595,587,583,584,586,585,614,582,713,576'
+kids_ids = '731,733'
+theater_ids = '905,271'
 
 def real_url(url, settings):
 
@@ -541,22 +547,41 @@ def run(settings):
 		debug('NNM uid: ' + str(uid))
 
 		write_movies_rss(get_fav_rss_url(movie_ids, passkey, uid), settings.movies_path(), settings)
-		write_movies_rss(get_fav_rss_url(661, passkey, uid), settings.animation_path(), settings)
-		write_tvshows(get_fav_rss_url(232, passkey, uid), settings.animation_tvshow_path(), settings)
-		write_tvshows(get_fav_rss_url(768, passkey, uid), settings.tvshow_path(), settings)
+		write_movies_rss(get_fav_rss_url(animation_ids, passkey, uid), settings.animation_path(), settings)
+		write_tvshows(get_fav_rss_url(animation_tvshow_ids, passkey, uid), settings.animation_tvshow_path(), settings)
+		write_tvshows(get_fav_rss_url(tvshow_ids, passkey, uid), settings.tvshow_path(), settings)
+		#write_movies_rss(get_fav_rss_url(documentary_ids, passkey, uid), settings.documentary_path(), settings)
+		write_tvshows(get_fav_rss_url(documentary_tvshow_ids, passkey, uid), settings.documentary_tvshow_path(), settings)
+		write_movies_rss(get_fav_rss_url(kids_ids, passkey, uid), settings.kids_path(), settings)
+		write_movies_rss(get_fav_rss_url(concert_ids, passkey, uid), settings.concert_path(), settings)
+		write_movies_rss(get_fav_rss_url(theater_ids, passkey, uid), settings.theater_path(), settings)
 
 	if settings.movies_save:
 		write_movies_rss(get_rss_url(movie_ids, passkey, settings), settings.movies_path(), settings)
 
 	if settings.animation_save:
-		write_movies_rss(get_rss_url(661, passkey, settings), settings.animation_path(), settings)
+		write_movies_rss(get_rss_url(animation_ids, passkey, settings), settings.animation_path(), settings)
 
 	if settings.animation_tvshows_save:
-		write_tvshows(get_rss_url(232, passkey, settings), settings.animation_tvshow_path(), settings)
+		write_tvshows(get_rss_url(animation_tvshow_ids, passkey, settings), settings.animation_tvshow_path(), settings)
 
 	if settings.tvshows_save:
-		write_tvshows(get_rss_url(768, passkey, settings), settings.tvshow_path(), settings)
+		write_tvshows(get_rss_url(tvshow_ids, passkey, settings), settings.tvshow_path(), settings)
 
+	if settings.documentary_tvshows_save:
+		write_tvshows(get_rss_url(documentary_tvshow_ids, passkey, settings), settings.documentary_tvshow_path(), settings)
+
+	if settings.documentary_save:
+		write_movies_rss(get_rss_url(documentary_ids, passkey, settings), settings.documentary_path(), settings)
+
+	if settings.concert_save:
+		write_movies_rss(get_rss_url(concert_ids, passkey, settings), settings.concert_path(), settings)
+
+	if settings.kids_save:
+		write_movies_rss(get_rss_url(kids_ids, passkey, settings), settings.kids_path(), settings)
+
+	if settings.theater_save:
+		write_movies_rss(get_rss_url(theater_ids, passkey, settings), settings.theater_path(), settings)
 
 def get_magnet_link(url):
 	'''
@@ -729,12 +754,12 @@ def search_generate(what, imdb, settings, path_out):
 		count += make_search_strms(result1, settings, 'movie', settings.movies_path(), path_out)
 
 	if settings.animation_save and count == 0:
-		url = make_search_url(what, '661')
+		url = make_search_url(what, animation_ids)
 		result2 = search_results(imdb, session, settings, url)
 		count += make_search_strms(result2, settings, 'movie', settings.animation_path(), path_out)
 
 	if settings.animation_tvshows_save and count == 0:
-		url = make_search_url(what, '232')
+		url = make_search_url(what, animation_tvshow_ids)
 		result3 = search_results(imdb, session, settings, url, 'tvshow')
 		count += make_search_strms(result3, settings, 'tvshow', settings.animation_tvshow_path(), path_out)
 
@@ -742,6 +767,27 @@ def search_generate(what, imdb, settings, path_out):
 		url = make_search_url(what, tvshow_ids)
 		result4 = search_results(imdb, session, settings, url, 'tvshow')
 		count += make_search_strms(result4, settings, 'tvshow', settings.tvshow_path(), path_out)
+			
+	if settings.documentary_tvshows_save and count == 0:
+		url = make_search_url(what, documentary_tvshow_ids)
+		result5 = search_results(imdb, session, settings, url)
+		with filesystem.save_make_chdir_context(settings.documentary_tvshow_path()):
+			count += make_search_strms(result5, settings, 'tvshow', path_out)
+
+	if settings.concert_save and count == 0:
+		url = make_search_url(what, concert_ids)
+		result6 = search_results(imdb, session, settings, url)
+		count += make_search_strms(result6, settings, 'movie', settings.animation_path(), path_out)
+
+	if settings.kids_save and count == 0:
+		url = make_search_url(what, kids_ids)
+		result7 = search_results(imdb, session, settings, url)
+		count += make_search_strms(result7, settings, 'movie', settings.animation_path(), path_out)
+
+	if settings.theater_save and count == 0:
+		url = make_search_url(what, theater_ids)
+		result8 = search_results(imdb, session, settings, url)
+		count += make_search_strms(result8, settings, 'movie', settings.animation_path(), path_out)
 
 	return count
 
