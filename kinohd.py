@@ -122,6 +122,10 @@ class Process(object):
 			if not self.settings.documentary_save:
 				return
 			base_path = self.settings.documentary_path()
+		elif u'клипы' in genre:
+			if not self.settings.concert_save:
+				return
+			base_path = self.settings.concert_path()
 		else:
 			if not self.settings.movies_save:
 				return
@@ -140,6 +144,10 @@ class Process(object):
 			if not self.settings.animation_tvshows_save:
 				return
 			base_path = self.settings.animation_tvshow_path()
+		elif u'документальный' in genre:
+			if not self.settings.documentary_tvshows_save:
+				return
+			base_path = self.settings.documentary_tvshow_path()
 		else:
 			if not self.settings.tvshows_save:
 				return
