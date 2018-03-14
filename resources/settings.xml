@@ -126,12 +126,12 @@
     </category>
 
     <category label="KinoHD">
-      <setting label="Использовать" type="bool" id="kinohd_enable" default="false"/>
+      <setting label="Использовать" type="bool" id="kinohd_enable" default="true"/>
       <setting label="Категории" type="lsep"/>
       <setting label="4K"       type="bool" id="kinohd_4k" default="true"/>
       <setting label="FullHD"   type="bool" id="kinohd_1080p" default="true"/>
       <setting label="HD"       type="bool" id="kinohd_720p" default="true"/>
-      <setting label="3D"       type="bool" id="kinohd_3d" default="true"/>
+      <setting label="3D"       type="bool" id="kinohd_3d" default="false"/>
       <setting label="Сериалы"  type="bool" id="kinohd_serial" default="true"/>
     </category>
   

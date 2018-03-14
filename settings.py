@@ -60,10 +60,10 @@ class Settings:
 		#--------------------------------------------------------------------------------
 		Settings.current_settings	= self
 		#--------------------------------------------------------------------------------
-		self.movies_url 			= self.base_url  '?cat=71&passkey='  hdclub_passkey
-		self.animation_url 			= self.base_url  '?cat=70&passkey='  hdclub_passkey
-		self.documentary_url 		= self.base_url  '?cat=78&passkey='  hdclub_passkey
-		self.hdclub_passkey			= hdclub_passkey
+#		self.movies_url 			= self.base_url  '?cat=71&passkey='  hdclub_passkey
+#		self.animation_url 			= self.base_url  '?cat=70&passkey='  hdclub_passkey
+#		self.documentary_url 		= self.base_url  '?cat=78&passkey='  hdclub_passkey
+#		self.hdclub_passkey			= hdclub_passkey
 		self.bluebird_passkey		= bluebird_passkey
 		self.bluebird_login			= bluebird_login
 		self.bluebird_password		= bluebird_password
