@@ -777,17 +777,17 @@ def search_generate(what, imdb, settings, path_out):
 	if settings.concert_save and count == 0:
 		url = make_search_url(what, concert_ids)
 		result6 = search_results(imdb, session, settings, url)
-		count += make_search_strms(result6, settings, 'movie', settings.animation_path(), path_out)
+		count += make_search_strms(result6, settings, 'movie', settings.concert_path(), path_out)
 
 	if settings.kids_save and count == 0:
 		url = make_search_url(what, kids_ids)
 		result7 = search_results(imdb, session, settings, url)
-		count += make_search_strms(result7, settings, 'movie', settings.animation_path(), path_out)
+		count += make_search_strms(result7, settings, 'movie', settings.kids_path(), path_out)
 
 	if settings.theater_save and count == 0:
 		url = make_search_url(what, theater_ids)
 		result8 = search_results(imdb, session, settings, url)
-		count += make_search_strms(result8, settings, 'movie', settings.animation_path(), path_out)
+		count += make_search_strms(result8, settings, 'movie', settings.theate_path(), path_out)
 
 	return count
 
