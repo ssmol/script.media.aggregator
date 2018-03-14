@@ -571,8 +571,8 @@ def run(settings):
 	if settings.documentary_tvshows_save:
 		write_tvshows(get_rss_url(documentary_tvshow_ids, passkey, settings), settings.documentary_tvshow_path(), settings)
 
-	if settings.documentary_save:
-		write_movies_rss(get_rss_url(documentary_ids, passkey, settings), settings.documentary_path(), settings)
+	#if settings.documentary_save:
+	#	write_movies_rss(get_rss_url(documentary_ids, passkey, settings), settings.documentary_path(), settings)
 
 	if settings.concert_save:
 		write_movies_rss(get_rss_url(concert_ids, passkey, settings), settings.concert_path(), settings)
