@@ -22,7 +22,7 @@ try:
 except:
 	_addondir = u''
 
-debug(_addondir.encode('utf-8'))
+debug(_addondir)
 
 from plugin import make_url
 
@@ -106,12 +106,19 @@ def load_settings():
 	settings.copy_torrent			= getSetting('copy_torrent') == 'true'
 	settings.copy_torrent_path		= getSetting('copy_torrent_path').decode('utf-8')
 
-	settings.use_kinopoisk			= getSetting('use_kinopoisk') == 'true'
-	settings.use_worldart			= getSetting('use_worldart') == 'true'
-	settings.kp_googlecache			= getSetting('kp_googlecache') == 'true'
-	settings.kp_usezaborona			= getSetting('kp_usezaborona') == 'true'
+	settings.use_kinopoisk			= getSetting('use_kinopoisk')	== 'true'
+	settings.use_worldart			= getSetting('use_worldart')	== 'true'
+	settings.kp_googlecache			= getSetting('kp_googlecache')	== 'true'
+	settings.kp_usezaborona			= getSetting('kp_usezaborona')	== 'true'
 
-	settings.show_sources			= getSetting('show_sources') == 'true'
+	settings.show_sources			= getSetting('show_sources')	== 'true'
+
+	settings.kinohd_enable			= getSetting('kinohd_enable')	== 'true'
+	settings.kinohd_4k				= getSetting('kinohd_4k')		== 'true'
+	settings.kinohd_1080p			= getSetting('kinohd_1080p')	== 'true'
+	settings.kinohd_720p			= getSetting('kinohd_720p')		== 'true'
+	settings.kinohd_3d				= getSetting('kinohd_3d')		== 'true'
+	settings.kinohd_serial			= getSetting('kinohd_serial')	== 'true'
 
 	return settings
 
@@ -483,7 +490,7 @@ def play_torrent(settings, params):
 	strmFilename = nfoFullPath.replace('.nfo', '.strm')
 	nfoReader = NFOReader(nfoFullPath, tempPath) if filesystem.exists(nfoFullPath) else None
 
-	debug(strmFilename.encode('utf-8'))
+	debug(strmFilename)
 	
 	from base import STRMWriterBase
 	links_with_ranks = STRMWriterBase.get_links_with_ranks(strmFilename, settings, use_scrape_info=True)
@@ -494,6 +501,7 @@ def play_torrent(settings, params):
 	nnmclub_enable = _addon.getSetting('nnmclub_enable') == 'true'
 	rutor_enable = _addon.getSetting('rutor_enable') == 'true'
 	soap4me_enable = _addon.getSetting('soap4me_enable') == 'true'
+	kinohd_enable = _addon.getSetting('kinohd_enable') == 'true'
 
 	onlythis = False
 	if 'onlythis' in params and params['onlythis'] == 'true':
@@ -514,6 +522,9 @@ def play_torrent(settings, params):
 			links_with_ranks.remove(v)
 		if not soap4me_enable and 'soap4.me' in v['link']:
 			links_with_ranks.remove(v)
+		if not kinohd_enable and 'kinohd' in v['link']:
+			links_with_ranks.remove(v)
+
 
 	debug('links_with_ranks: ' + str(links_with_ranks))
 
@@ -616,8 +627,9 @@ def dialog_action(action, settings, params=None):
 		nnmclub_enable = _addon.getSetting('nnmclub_enable') == 'true'
 		rutor_enable = _addon.getSetting('rutor_enable') == 'true'
 		soap4me_enable = _addon.getSetting('soap4me_enable') == 'true'
+		kinohd_enable = _addon.getSetting('kinohd_enable') == 'true'
 
-		if not (anidub_enable or hdclub_enable or bluebird_enable or nnmclub_enable or rutor_enable or soap4me_enable):
+		if not (anidub_enable or hdclub_enable or bluebird_enable or nnmclub_enable or rutor_enable or soap4me_enable or kinohd_enable):
 			xbmcgui.Dialog().ok(_ADDON_NAME, u'Пожалуйста, заполните настройки', u'Ни одного сайта не выбрано')
 			action = dialog_action_case.settings
 		else:
@@ -988,18 +1000,6 @@ def action_show_library(params):
 
 			if 'animtv' in self.category:
 				return 'Animation TVShows' not in item['file']
-
-			if 'documentarytv' in self.category:
-				return 'Documentary TVShows' not in item['file']
-
-			if 'kids' in self.category:
-				return 'Kids' not in item['file']
-
-			if 'concert' in self.category:
-				return 'Concert' not in item['file']
-
-			if 'theater' in self.category:
-				return 'Theater' not in item['file']
 
 			return True
 

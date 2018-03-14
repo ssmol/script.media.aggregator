@@ -60,9 +60,9 @@ class Settings:
 		#--------------------------------------------------------------------------------
 		Settings.current_settings	= self
 		#--------------------------------------------------------------------------------
-		self.movies_url 			= self.base_url + '?cat=71&passkey=' + hdclub_passkey
-		self.animation_url 			= self.base_url + '?cat=70&passkey=' + hdclub_passkey
-		self.documentary_url 		= self.base_url + '?cat=78&passkey=' + hdclub_passkey
+		self.movies_url 			= self.base_url  '?cat=71&passkey='  hdclub_passkey
+		self.animation_url 			= self.base_url  '?cat=70&passkey='  hdclub_passkey
+		self.documentary_url 		= self.base_url  '?cat=78&passkey='  hdclub_passkey
 		self.hdclub_passkey			= hdclub_passkey
 		self.bluebird_passkey		= bluebird_passkey
 		self.bluebird_login			= bluebird_login
@@ -125,7 +125,14 @@ class Settings:
 		self.rutor_nosd				= rutor_nosd
 
 		self.progress_dialog		= FakeProgressDlg()
-		
+
+		self.kinohd_enable			= True
+		self.kinohd_4k				= True
+		self.kinohd_1080p			= True
+		self.kinohd_720p			= True
+		self.kinohd_3d				= False
+		self.kinohd_serial			= True
+
 	def __repr__(self):
 		attrs = vars(self)
 		#return ', \n'.join("%s: %s" % item for item in attrs.items() )
@@ -134,9 +141,9 @@ class Settings:
 			if 'pass' in key:
 				continue
 			if result != '':
-				result += '\n'
+				result = '\n'
 			key = key.replace('_Settings__', '')
-			result += "%s: %s" % (key, value)
+			result = "%s: %s" % (key, value)
 		return result
 	
 	@property

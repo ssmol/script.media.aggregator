@@ -83,7 +83,7 @@
           <setting label="Login" type="text"   id="anidub_login" enable="eq(-2,true)" default=""/>
           <setting label="Password" type="text"   id="anidub_password" enable="eq(-3,true)" option="hidden"  default=""/>
 		  <setting label="Обновления" type="bool" id="anidub_rss" enable="eq(-4,true)" default="true"/>
-		  <setting label="Избранное" type="bool" id="anidub_favorite" enable="eq(-5,true)+!eq(-2,'')" default="true"/>
+		  <setting label="Избранное" type="bool" id="anidub_favorite" enable="eq(-5,true)!eq(-2,'')" default="true"/>
     </category>
   
     <!--
@@ -124,6 +124,17 @@
     
       <setting label="Исключать SD-контент" type="bool" id="rutor_nosd" default="true"/>
     </category>
+
+    <category label="KinoHD">
+      <setting label="Использовать" type="bool" id="kinohd_enable" default="false"/>
+      <setting label="Категории" type="lsep"/>
+      <setting label="4K"       type="bool" id="kinohd_4k" default="true"/>
+      <setting label="FullHD"   type="bool" id="kinohd_1080p" default="true"/>
+      <setting label="HD"       type="bool" id="kinohd_720p" default="true"/>
+      <setting label="3D"       type="bool" id="kinohd_3d" default="true"/>
+      <setting label="Сериалы"  type="bool" id="kinohd_serial" default="true"/>
+    </category>
+  
     <!--
     <category label="soap4.me">
       <setting label="Использовать" type="bool" id="soap4me_enable" default="false"/>

@@ -57,7 +57,7 @@ def clean_html(page):
 	#r = re.compile(pattern, flags=flags)
 	#debug(r)
 	#page = r.sub('', page)
-	#debug(page.encode('utf-8'))
+	#debug(page)
 	page = remove_script_tags(page)
 
 	return page.replace("</sc'+'ript>", "").replace('</bo"+"dy>', '').replace('</ht"+"ml>', '')
@@ -356,6 +356,11 @@ def seeds_peers(item):
 			t_id = re.search(r'/torrent/(\d+)', link).group(1)
 			fn = filesystem.join(settings.torrents_path(), 'rutor', t_id + '.torrent')
 			return scrape_now(fn)
+		elif 'kinohd'  in link:
+			part = self.url.split('/')[-1]
+			t_id = re.search(r'^(\d+)', part).group(1)
+			fn = filesystem.join(settings.torrents_path(), 'kinohd', t_id + '.torrent')
+			return scrape_now(fn)
 
 	except BaseException as e:
 		debug(str(e))
@@ -462,9 +467,16 @@ class STRMWriterBase(object):
 					alternative.write( make_utf8(variant['link']) + '\n')
 
 
+class EmptyMovieApi(object):
+	def get(self, key, default=None):
+		return default
+	def __getitem__(self, key):
+		raise AttributeError
+
+
 class Informer(object):
 	def __init__(self):
-		self.__movie_api = None
+		self.__movie_api = EmptyMovieApi()
 
 	def make_movie_api(self, imdb_id, kp_id, settings):
 		orig=None
@@ -516,7 +528,7 @@ class DescriptionParserBase(Informer):
 	def Dump(self):
 		debug('-------------------------------------------------------------------------')
 		for key, value in self._dict.iteritems():
-			debug(key.encode('utf-8') + '\t: ' + value.encode('utf-8'))
+			debug(key + '\t: ' + value)
 
 	def Dict(self):
 		return self._dict

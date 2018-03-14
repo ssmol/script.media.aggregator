@@ -115,21 +115,7 @@ class IDs(object):
 		kp_id = IDs.id_by_kp_url(kp_url)
 		return kp_id in IDs.imdb_by_kp
 
-class soup_base(object):
-	def __init__(self, url, headers=None):
-		self.url = url
-		self._soup = None
-		self._request = None
-		self._headers = headers
-
-	@property
-	def soup(self):
-		if not self._soup:
-			r = requests.get(self.url, headers=self._headers)
-			self._soup = BeautifulSoup(r.content, 'html.parser')
-			self._request = r
-
-		return self._soup
+from soup_base import soup_base
 
 class world_art_soup(soup_base):
 	headers = {
@@ -351,6 +337,13 @@ class world_art(world_art_soup):
 
 	#def trailer(self):
 	#	info = self.info
+	def director(self):
+		try:
+			result = self.info.director
+			result = result.replace(u'и другие', '')
+			return [d.strip() for d in result.split(',')]
+		except:
+			return []
 
 	def actors(self):
 		try:
@@ -460,7 +453,7 @@ class KinopoiskAPI(object):
 
 	def __init__(self, kinopoisk_url = None, settings = None):
 		from settings import Settings
-		self.settings = settings if settings else Settings()
+		self.settings = settings if settings else Settings('')
 		self.kinopoisk_url = kinopoisk_url
 		self.soup = None
 		self._actors = None
@@ -572,6 +565,15 @@ class KinopoiskAPI(object):
 			for a in self.soup.find_all('a'):
 				if '/lists/m_act%5Byear%5D/' in a.get('href', ''):
 					return a.get_text()
+		raise AttributeError
+
+	def director(self):
+		self.makeSoup()
+		if self.soup:
+			#<td itemprop="director"><a href="/name/535852/" data-popup-info="enabled">Роар Утхауг</a></td>
+			td = self.soup.find('td', attrs={"itemprop": "director"})
+			if td:
+				return [ a.get_text() for a in td.find_all('a') if '/name' in a['href'] ]
 		raise AttributeError
 
 	def plot(self):
@@ -750,6 +752,13 @@ class ImdbAPI(object):
 
 		raise AttributeError
 
+	def type(self):
+		# <div class="bp_heading">Episode Guide</div>
+		for div in self.page.find_all('div', class_="bp_heading"):
+			if div.get_text() == 'Episode Guide':
+				return 'tvshow'
+
+		return 'movie'
 
 
 class KinopoiskAPI2(KinopoiskAPI):
@@ -1025,6 +1034,15 @@ class TMDB_API(object):
 		ll = [g['name'] for g in self.tmdb_data['genres']]
 		return ll
 
+	def countries(self):
+		from countries import ru
+		cc = [c['iso_3166_1'] for c in self.tmdb_data['production_countries']]
+		return [ru(c) for c in cc]
+	
+	def studios(self):
+		ss = [ s['name'] for s in self.tmdb_data['production_companies']]
+		return ss
+
 class MovieAPI(object):
 
 	APIs	= {}
@@ -1167,13 +1185,23 @@ class MovieAPI(object):
 					nr += 1
 			return r > nr
 
+		def ru_list(ll):
+			for l in ll:
+				if ru_text(l):
+					return True
+			return False
+
 		for api in self.providers:
 			try:
 				res = api.__getattribute__(name)
 				if res and callable(res):
 					value = res()
-					if ru_text(value):
-						return value
+					if isinstance(value, list):
+						if ru_list(value):
+							return value
+					else:
+						if ru_text(value):
+							return value
 
 			except AttributeError:
 				continue
