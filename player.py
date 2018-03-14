@@ -88,6 +88,10 @@ def load_settings():
 	settings.anime_save				= getSetting('anime_save') == 'true'
 	settings.tvshows_save			= getSetting('tvshows_save') == 'true'
 	settings.animation_tvshows_save = getSetting('animation_tvshows_save') == 'true'
+	settings.documentary_tvshows_save		= getSetting('documentary_tvshows_save') == 'true'
+	settings.kids_save				= getSetting('kids_save') == 'true'
+	settings.concert_save			= getSetting('concert_save') == 'true'
+	settings.theater_save = getSetting('theater_save') == 'true'
 
 	settings.torrent_path			= getSetting('torrent_path')
 

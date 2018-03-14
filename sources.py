@@ -28,6 +28,18 @@ def need_create(settings):
 	if settings.documentary_save and not filesystem.exists(settings.documentary_path()):
 		return True
 
+	if settings.kids_save and not filesystem.exists(settings.kids_path()):
+		return True
+
+	if settings.documentar_tvshows_save and not filesystem.exists(settings.documentar_tvshow_path()):
+		return True
+
+	if settings.concert_save and not filesystem.exists(settings.concert_path()):
+		return True
+
+	if settings.theater_save and not filesystem.exists(settings.theater_path()):
+		return True
+
 	return False
 
 def create(settings):
@@ -80,6 +92,34 @@ def create(settings):
 			if not filesystem.exists(path):
 				filesystem.makedirs(path)
 			sources.add_video(path, u'Фильмы', 'movies')
+			need_restart = True
+
+		if settings.documentary_tvshows_save:
+			path = settings.documentary_tvshow_path()
+			if not filesystem.exists(path):
+				filesystem.makedirs(path)
+			sources.add_video(path, u'Документальные сериалы', 'tvshows')
+			need_restart = True
+
+		if settings.kids_save:
+			path = settings.kids_path()
+			if not filesystem.exists(path):
+				filesystem.makedirs(path)
+			sources.add_video(path, u'Детские фильмы', 'movies')
+			need_restart = True
+
+		if settings.concert_save:
+			path = settings.concert_path()
+			if not filesystem.exists(path):
+				filesystem.makedirs(path)
+			sources.add_video(path, u'Концерты', 'movies')
+			need_restart = True
+
+		if settings.theater_save:
+			path = settings.theater_path()
+			if not filesystem.exists(path):
+				filesystem.makedirs(path)
+			sources.add_video(path, u'Спектакли', 'movies')
 			need_restart = True
 
 	return need_restart
