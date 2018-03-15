@@ -371,7 +371,7 @@ def clean_movies():
 
 		strm_path = filesystem.join(base_path, make_fullpath(title, '.strm'))
 		#alt_path = strm_path + '.alternative'
-		nfo_path = filesystem.join(base_path, make_fullpath(title, '.nfo'))
+		nfo_path = filesystem.join(base_path, make_fullpath(title, '.nonfo'))
 
 		strm_data = filesystem.fopen(mm[0][3], 'r').read()
 		alt_data = []

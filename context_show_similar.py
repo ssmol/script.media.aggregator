@@ -42,7 +42,7 @@ def show_similar():
 
 	if not imdb_id and dbtype == 'episode':
 		from nforeader import NFOReader
-		nfo_path = FileNameAndPath.replace('.strm', '.nfo')
+		nfo_path = FileNameAndPath.replace('.strm', '.nonfo')
 		debug(nfo_path)
 		rd = NFOReader(nfo_path, '')
 		tvs_rd = rd.tvs_reader()

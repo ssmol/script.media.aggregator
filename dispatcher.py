@@ -23,7 +23,7 @@ def dispatch():
 			rel_path = urllib.unquote(params['path']).decode('utf-8')
 			debug(rel_path)
 
-			filename = urllib.unquote(params['nfo']).decode('utf-8').replace(u'.nfo', u'.strm')
+			filename = urllib.unquote(params['nfo']).decode('utf-8').replace(u'.nonfo', u'.strm')
 			debug(filename)
 
 			path = filesystem.join(settings.base_path(), rel_path, filename)

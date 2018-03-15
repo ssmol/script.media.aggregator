@@ -323,7 +323,7 @@ def play_torrent_variant(path, info_dialog, episodeNumber, nfoReader, settings, 
 		filename = urllib.unquote(params['nfo']).decode('utf-8')
 
 		from kodidb import KodiDB
-		k_db = KodiDB(filename.replace(u'.nfo', u'.strm'), \
+		k_db = KodiDB(filename.replace(u'.nonfo', u'.strm'), \
 		              rel_path,
 		              sys.argv[0] + sys.argv[2])
 		k_db.PlayerPreProccessing()
@@ -496,7 +496,7 @@ def play_torrent(settings, params):
 	rel_path = urllib.unquote(params.get('path', ''))
 	nfoFilename = urllib.unquote(params.get('nfo', ''))
 	nfoFullPath = NFOReader.make_path(base_path, rel_path, nfoFilename)
-	strmFilename = nfoFullPath.replace('.nfo', '.strm')
+	strmFilename = nfoFullPath.replace('.nonfo', '.strm')
 	nfoReader = NFOReader(nfoFullPath, tempPath) if filesystem.exists(nfoFullPath) else None
 
 	debug(strmFilename)
@@ -820,7 +820,7 @@ def force_library_update(settings, params):
 	xbmc.sleep(500)
 
 
-menu_items = [u'Генерировать .strm и .nfo файлы',
+menu_items = [u'Генерировать .strm и .nonfo файлы',
 				u'Создать источники',
 				u'Настройки',
 				u'Поиск',

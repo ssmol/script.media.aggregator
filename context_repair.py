@@ -193,7 +193,7 @@ def remove_files(path):
 					debug(u'remove: {}		[Fail]'.format(path))
 
 		remove(path)
-		nfo_path = path.replace('.strm', '.nfo')
+		nfo_path = path.replace('.strm', '.nonfo')
 		remove(nfo_path)
 		alt_path = path + '.alternative'
 		remove(alt_path)

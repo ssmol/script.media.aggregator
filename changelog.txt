@@ -17,7 +17,7 @@
 	small fix
 	t2h remote support
 	fix
-	+<premiered> in tvshow.nfo
+	+<premiered> in tvshow.nonfo
 	Video codec in calculate rank
 	fix index error crash
 	Color title
@@ -197,7 +197,7 @@
 - Исправлена сортировка эпизодов
 
 0.1.4
-- Исправлена генерация (запись .nfo) для OS X (Python 2.6)
+- Исправлена генерация (запись .nonfo) для OS X (Python 2.6)
 - Выход из плагина по Esc, Backspace
 
 0.1.3
