@@ -6,7 +6,7 @@ from log import debug
 
 import os
 import xml.etree.ElementTree as ET
-import filesystem
+import requests, filesystem
 
 def ensure_utf8(string):
 	if isinstance(string, unicode):
@@ -43,12 +43,6 @@ class NFOReader(object):
 	def make_path(base_path, rel_path, filename):
 		# params is utf-8
 		path = filesystem.join(base_path.decode('utf-8'), rel_path.decode('utf-8'), filename.decode('utf-8'))
-
-		if path.startswith('/') or '://' in path:
-			path = path.replace('\\', '/')
-		elif len(path) > 2 and path[1] == ':' and path[2] == '\\':
-			path = path.replace('/', '\\')
-
 		return path
 
 	def is_episode(self):
@@ -113,7 +107,6 @@ class NFOReader(object):
 		return info
 		
 	def download_image(self, url, type):
-		import requests
 		r = requests.get(url)
 		debug(r.headers)
 		
@@ -160,7 +153,7 @@ class NFOReader(object):
 		if is_episode:
 			path = filesystem.dirname(self.path)
 			path = filesystem.abspath(filesystem.join(path, os.pardir))
-			path = filesystem.join(path, u'tvshow.nfo')
+			path = filesystem.join(path, u'tvshow.nonfo')
 
 			if filesystem.exists(path):
 				debug(u'tvs_reader: ' + path)
@@ -192,6 +185,9 @@ class NFOReader(object):
 		return art
 
 	def make_list_item(self, playable_url):
+		import vsdbg
+		vsdbg._bp()
+
 		import xbmcgui
 		list_item = xbmcgui.ListItem(path=playable_url)
 		list_item.setInfo('video', self.try_join_tvshow_info())
@@ -204,11 +200,11 @@ class NFOReader(object):
 
 # tests
 if __name__ == '__main__':
-	#reader = NFOReader(u'd:\\-=Vd=-\\Videos\\TVShows\\Однажды в сказке\\Season 1\\03. episode_s01e03.nfo', None)
+	#reader = NFOReader(u'd:\\-=Vd=-\\Videos\\TVShows\\Однажды в сказке\\Season 1\\03. episode_s01e03.nonfo', None)
 	#print reader.try_join_tvshow_info()
 	#print reader.try_join_tvshow_art()
 
-	rd = NFOReader(u'C:\\Users\\vd\\Videos\\TVShows\\Гастролёры\\Season 1\\03. episode_s01e03.nfo', '')
+	rd = NFOReader(u'C:\\Users\\vd\\Videos\\TVShows\\Гастролёры\\Season 1\\03. episode_s01e03.nonfo', '')
 	tvs_rd = rd.tvs_reader()
 	imdb_id = tvs_rd.imdb_id()
 
