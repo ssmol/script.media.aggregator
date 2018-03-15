@@ -14,7 +14,7 @@
         <setting label="Концерты" 	type="bool"   id="concert_save" 	default="true"/>
         <setting label="Спектакли" 	type="bool"   id="theater_save" 	default="true"/>
         <setting label="Первая помощь" type="lsep"/>
-        <setting label="Очистка дубликатов фильмов" type="action" action="RunPlugin(plugin://script.media.aggregator/?action=clean_movies)"/>
+        <setting label="Очистка дубликатов фильмов" type="action" action="RunPlugin(plugin://script.nonfo.aggregator/?action=clean_movies)"/>
     </category>
 
     <category label="Дополнительно">

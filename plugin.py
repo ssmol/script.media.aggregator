@@ -1,7 +1,7 @@
 import urllib, sys
 
 def make_url(params):
-	url = 'plugin://script.media.aggregator/?' + urllib.urlencode(params)
+	url = 'plugin://script.nonfo.aggregator/?' + urllib.urlencode(params)
 	return url
 
 def get_params():

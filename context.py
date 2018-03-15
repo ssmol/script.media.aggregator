@@ -96,22 +96,22 @@ class MyWindow(pyxbmct.AddonDialogWindow):
 
 		if kodi_ver_major < 16:
 			li = xbmcgui.ListItem(u'НАСТРОЙКИ...')
-			li.setProperty('link', 'plugin://script.media.aggregator/?action=settings')
+			li.setProperty('link', 'plugin://script.nonfo.aggregator/?action=settings')
 			self.list.addItem(li)
 
 			li = xbmcgui.ListItem(u'СМОТРИТЕ ТАКЖЕ...')
-			li.setProperty('link', 'plugin://script.media.aggregator/?action=show_similar')
+			li.setProperty('link', 'plugin://script.nonfo.aggregator/?action=show_similar')
 			self.list.addItem(li)
 
 			li = xbmcgui.ListItem(u'ПОИСК ИСТОЧНИКОВ...')
-			li.setProperty('link', 'plugin://script.media.aggregator/?action=add_media')
+			li.setProperty('link', 'plugin://script.nonfo.aggregator/?action=add_media')
 			self.list.addItem(li)
 
 			pathUnited = 'special://home/addons/plugin.video.united.search'
 			pathUnited = xbmc.translatePath(pathUnited)
 			if filesystem.exists(pathUnited.decode('utf-8')):
 				li = xbmcgui.ListItem(u'UNITED SEARCH...')
-				li.setProperty('link', 'plugin://script.media.aggregator/?action=united_search')
+				li.setProperty('link', 'plugin://script.nonfo.aggregator/?action=united_search')
 				self.list.addItem(li)
 		
 
@@ -468,23 +468,23 @@ def main(settings=None, path=None, name=None, run=None):
 	link = cursel.getProperty('link')
 	debug(link)
 
-	if link == 'plugin://script.media.aggregator/?action=settings':
-		xbmc.executebuiltin('Addon.OpenSettings(script.media.aggregator)')
+	if link == 'plugin://script.nonfo.aggregator/?action=settings':
+		xbmc.executebuiltin('Addon.OpenSettings(script.nonfo.aggregator)')
 		del window
 		return True
 
-	if link == 'plugin://script.media.aggregator/?action=show_similar':
+	if link == 'plugin://script.nonfo.aggregator/?action=show_similar':
 		from context_show_similar import show_similar
 		if show_similar():
 			del window
 			return True
 
-	if link == 'plugin://script.media.aggregator/?action=add_media':
+	if link == 'plugin://script.nonfo.aggregator/?action=add_media':
 		from context_get_sources import get_sources
 		get_sources(settings)
 		return True
 
-	if link == 'plugin://script.media.aggregator/?action=united_search':
+	if link == 'plugin://script.nonfo.aggregator/?action=united_search':
 		import context_united_search
 
 	selected_file = None

@@ -13,7 +13,7 @@ import filesystem
 import urllib, time
 
 # Определяем параметры плагина
-_ADDON_NAME = 'script.media.aggregator'
+_ADDON_NAME = 'script.nonfo.aggregator'
 _addon = xbmcaddon.Addon(id=_ADDON_NAME)
 _addon_path = _addon.getAddonInfo('path').decode('utf-8')
 
@@ -708,7 +708,7 @@ def dialog_action(action, settings, params=None):
 			li.setProperty("folder", "true")
 			li.setProperty('IsPlayable', 'false')
 
-			url = 'plugin://script.media.aggregator/?action=show_category&category=' + l[0]
+			url = 'plugin://script.nonfo.aggregator/?action=show_category&category=' + l[0]
 			debug(url)
 			xbmcplugin.addDirectoryItem(handle=addon_handle, url=url, listitem=li, isFolder=True)
 
@@ -751,7 +751,7 @@ def dialog_action(action, settings, params=None):
 			li.setProperty("folder", "true")
 			li.setProperty('IsPlayable', 'false')
 
-			url = 'plugin://script.media.aggregator/?action=show_library&category=' + l[0]
+			url = 'plugin://script.nonfo.aggregator/?action=show_library&category=' + l[0]
 			xbmcplugin.addDirectoryItem(handle=addon_handle, url=url, listitem=li, isFolder=True)
 
 		xbmcplugin.endOfDirectory(addon_handle)
@@ -843,7 +843,7 @@ def main_menu(menu_actions):
 	addon_handle = int(sys.argv[1])
 	for menu in menu_items:
 		li = xbmcgui.ListItem(menu)
-		url = 'plugin://script.media.aggregator/?menu=' + menu_actions[indx]
+		url = 'plugin://script.nonfo.aggregator/?menu=' + menu_actions[indx]
 		xbmcplugin.addDirectoryItem(handle=addon_handle, url=url, listitem=li, isFolder=indx > dialog_action_case.settings)
 		indx += 1
 	

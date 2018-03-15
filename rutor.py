@@ -654,9 +654,9 @@ def search_generate(what, imdb, settings, path_out):
 
 if __name__ == '__main__':
 	settings = Settings(r'c:\Users\vd\Videos')
-	settings.addon_data_path = u"c:\\Users\\vd\\AppData\\Roaming\\Kodi\\userdata\\addon_data\\script.media.aggregator\\"
+	settings.addon_data_path = u"c:\\Users\\vd\\AppData\\Roaming\\Kodi\\userdata\\addon_data\\script.nonfo.aggregator\\"
 	settings.rutor_domain = 'new-rutor.org'
-	settings.torrent_path = u'c:\\Users\\vd\\AppData\\Roaming\\Kodi\\userdata\\addon_data\\script.media.aggregator'
+	settings.torrent_path = u'c:\\Users\\vd\\AppData\\Roaming\\Kodi\\userdata\\addon_data\\script.nonfo.aggregator'
 	settings.torrent_player = 'torrent2http'
 	settings.kp_googlecache = True
 	settings.kp_usezaborona = True

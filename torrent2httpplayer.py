@@ -11,7 +11,7 @@ import urlparse, urllib, time, filesystem, xbmc, xbmcaddon
 def path2url(path):
 	return urlparse.urljoin('file:', urllib.pathname2url(path))
 	
-_ADDON_NAME =   'script.media.aggregator'
+_ADDON_NAME =   'script.nonfo.aggregator'
 _addon      =   xbmcaddon.Addon(id=_ADDON_NAME)
 
 dht_routers 		= ["router.bittorrent.com:6881","router.utorrent.com:6881"]

@@ -6,7 +6,7 @@ except:
 
 import inspect
 
-prefix = 'script.media.aggregator'
+prefix = 'script.nonfo.aggregator'
 
 import sys
 try:

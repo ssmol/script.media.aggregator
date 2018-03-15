@@ -16,7 +16,7 @@ class STRMWriter(STRMWriterBase):
 		
 		#------------------------------------------
 
-		link = u'plugin://script.media.aggregator/?action=play&torrent='
+		link = u'plugin://script.nonfo.aggregator/?action=play&torrent='
 		link += urllib2.quote(self.link.encode('utf-8'))
 		if episodeNumber != None:
 			link += u'&episodeNumber=' + str(episodeNumber - 1)
