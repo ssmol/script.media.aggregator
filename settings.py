@@ -88,8 +88,8 @@ class Settings:
 		self.nnmclub_password 		= nnmclub_password
 		self.nnmclub_pages			= nnmclub_pages
 		self.nnmclub_hours			= nnmclub_hours
-		self.use_kinopoisk			= True
-		self.use_worldart			= True
+		self.use_kinopoisk			= False
+		self.use_worldart			= False
 
 		self.show_sources			= False
 
