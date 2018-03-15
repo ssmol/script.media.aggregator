@@ -19,7 +19,7 @@ class FakeProgressDlg(object):
 	def update(self, *args):
 		pass
 
-_addon_name = 'Media Aggregator Fork'
+_addon_name = 'script.nonfo.aggregator'
 
 class Settings:
 	# feed=dl&
