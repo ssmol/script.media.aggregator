@@ -22,7 +22,7 @@
   <extension point="kodi.context.item">
     <menu id="kodi.core.main">
       <menu>
-        <label>script.nonfo.aggregatorNonfo</label>
+        <label>Media Agregator Nonfo</label>
         <item library="context.py">
           <label>ВЫБОР ИСТОЧНИКОВ...</label>
           <visible>[ StringCompare(ListItem.dbtype,movie) | StringCompare(ListItem.dbtype,episode) ] + StringCompare(ListItem.FileExtension,strm)</visible>
