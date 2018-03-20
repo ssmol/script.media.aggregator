@@ -789,12 +789,11 @@ def search_generate(what, imdb, settings, path_out):
 		url = make_search_url(what, theater_ids)
 		result8 = search_results(imdb, session, settings, url)
 		count += make_search_strms(result8, settings, 'movie', settings.theater_path(), path_out)
-			
+
 	if settings.documentary_save and count == 0:
 		url = make_search_url(what, documentary_ids)
 		result9 = search_results(imdb, session, settings, url)
-		with filesystem.save_make_chdir_context(settings.documentary_path()):
-			count += make_search_strms(result9, settings, 'movie', path_out)
+		count += make_search_strms(result9, settings, 'movie', settings.documentary_path(), path_out)
 
 	return count
 
