@@ -33,6 +33,7 @@ concert_ids = '258,955'
 documentary_tvshow_ids = '706,577,894,578,580,579,953,581,806,714,761,809,924,812,590,591,588,589,598,652,596,600,599,956,959,1295,597,819,594,593,595,587,583,584,586,585,614,582,713,576'
 kids_ids = '731,733'
 theater_ids = '905,271'
+documentary_ids = '706,577,894,578,580,579,953,581,806,714,761,809,924,812,590,591,588,589,598,652,596,600,599,956,959,1295,597,819,594,593,595,587,583,584,586,585,614,582,713,576'
 
 def real_url(url, settings):
 
@@ -788,6 +789,12 @@ def search_generate(what, imdb, settings, path_out):
 		url = make_search_url(what, theater_ids)
 		result8 = search_results(imdb, session, settings, url)
 		count += make_search_strms(result8, settings, 'movie', settings.theater_path(), path_out)
+			
+	if settings.documentary_save and count == 0:
+		url = make_search_url(what, documentary_ids)
+		result9 = search_results(imdb, session, settings, url)
+		with filesystem.save_make_chdir_context(settings.documentary_path()):
+			count += make_search_strms(result9, settings, 'movie', path_out)
 
 	return count
 
