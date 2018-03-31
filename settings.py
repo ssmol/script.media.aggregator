@@ -21,7 +21,7 @@ class FakeProgressDlg(object):
 
 _addon_name = 'script.nonfo.aggregator'
 
-class Settings:
+class Settings(object):
 	# feed=dl&
 	
 	base_url 			= 'http://hdclub.org/rss.php'
