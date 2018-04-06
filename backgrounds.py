@@ -311,7 +311,7 @@ def dt(ss):
 	fmt = '%Y-%m-%d %H:%M:%S'
 	try:
 		return datetime.datetime.strptime(ss, fmt)
-	except
+	except:
 		return 0
 
 	settings.progress_dialog.close()
@@ -358,6 +358,8 @@ def dt(ss):
 
 # ------------------------------------------------------------------------------------------------------------------- #
 def clean_movies():
+	_debug = True
+
 	from kodidb import MoreRequests
 	more_requests = MoreRequests()
 
@@ -432,11 +434,11 @@ for movie_duplicate in one_movie_duplicates:
 				filesystem.copyfile(last_strm_path, strm_path)
 				filesystem.copyfile(last_nfo_path, nfo_path)
 
-				#for movie_duplicate in one_movie_duplicates[:-1]:
-				#	safe_remove(movie_duplicate['c22'])
-				#	safe_remove(movie_duplicate['c22'].replace('.strm', '.nfo'))
-				#	safe_remove(movie_duplicate['c22'] + '.alternative')
-				#
+				for movie_duplicate in one_movie_duplicates[:-1]:
+					safe_remove(movie_duplicate['c22'])
+					safe_remove(movie_duplicate['c22'].replace('.strm', '.nfo'))
+					safe_remove(movie_duplicate['c22'] + '.alternative')
+	
 				#	remove_movie_by_id(movie_duplicate['idMovie'])
 
 		return update_fields
@@ -452,10 +454,18 @@ for movie_duplicate in one_movie_duplicates:
 			print_tb()
 			pass
 
+		if _debug:
+			break
+
 	# ----------------
 	# Clean & update Video library	
-	from jsonrpc_requests import VideoLibrary
-	VideoLibrary.Clean({'showdialogs': False})
+	from jsonrpc_requests import VideoLibrary, JSONRPC
+	if _debug:
+		ver = JSONRPC.Version()
+		VideoLibrary.Clean({'showdialogs': _debug})
+	else:
+		import xbmc
+		xbmc.executebuiltin('CleanLibrary("video")', wait=True)
 
 	# ----------------
 	# Apply watched & progress
