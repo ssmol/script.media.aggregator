@@ -159,6 +159,7 @@ def update_service(show_progress=False):
 	recheck_torrent_if_need(from_time, settings)
 	clean_movies()
 
+
 # ------------------------------------------------------------------------------------------------------------------- #
 def chunks(l, n):
 	"""Yield successive n-sized chunks from l."""
@@ -298,34 +299,6 @@ def add_media_process(title, imdb):
 		with filesystem.fopen(path, 'w') as f:
 			f.write(p[0].encode('utf-8'))
 
-def load_settings():
-	from player import load_settings as _load_settings
-	return _load_settings()
-
-def safe_remove(path):
-	import filesystem
-	if filesystem.exists(path):
-		filesystem.remove(path)
-
-def safe_copyfile(src, dst):
-	import filesystem
-
-	dirname = filesystem.dirname(dst)
-	if not filesystem.exists(dirname):
-		filesystem.makedirs(dirname)
-
-	if filesystem.exists(src):
-		filesystem.copyfile(src, dst)
-
-def dt(ss):
-	import datetime
-	# 2017-11-30 02:29:57
-	fmt = '%Y-%m-%d %H:%M:%S'
-	try:
-		return datetime.datetime.strptime(ss, fmt)
-	except:
-		return 0
-
 	settings.progress_dialog.close()
 
 	if count:
@@ -366,6 +339,36 @@ def dt(ss):
 	path = filesystem.join(addon_data_path(), imdb + '.ended')
 	with filesystem.fopen(path, 'w') as f:
 		f.write(str(count))
+
+
+def load_settings():
+	from player import load_settings as _load_settings
+	return _load_settings()
+
+def safe_remove(path):
+	import filesystem
+	if filesystem.exists(path):
+		filesystem.remove(path)
+
+def safe_copyfile(src, dst):
+	import filesystem
+
+	dirname = filesystem.dirname(dst)
+	if not filesystem.exists(dirname):
+		filesystem.makedirs(dirname)
+
+	if filesystem.exists(src):
+		filesystem.copyfile(src, dst)
+
+def dt(ss):
+	import datetime
+	# 2017-11-30 02:29:57
+	fmt = '%Y-%m-%d %H:%M:%S'
+	try:
+		return datetime.datetime.strptime(ss, fmt)
+	except:
+		return 0
+
 
 # ------------------------------------------------------------------------------------------------------------------- #
 def clean_movies():
@@ -417,32 +420,27 @@ def clean_movies():
 		_log(u'title = ' + title)
 		_log(u'strm_path = ' + strm_path)
 
-		strm_data = filesystem.fopen(one_movie_duplicates[0]['c22'], 'r').read()
- 		alt_data = []
+		#strm_data = filesystem.fopen(one_movie_duplicates[0]['c22'], 'r').read()
+		alt_data = []
 
 		update_fields = {}
 
-for movie_duplicate in one_movie_duplicates:
+		for movie_duplicate in one_movie_duplicates:
 			links_with_ranks = STRMWriterBase.get_links_with_ranks(movie_duplicate['c22'], settings, use_scrape_info=False)
- 			alt_data.extend(links_with_ranks)
- 
+			alt_data.extend(links_with_ranks)
+
 			# Sync playCount & resume time
-			if m['playCount']:
-				update_fields['playcount'] = int(update_fields.get('playcount', 0)) + int(movie_duplicate['playCount']) 
+			if movie_duplicate['playCount']:
+				update_fields['playcount'] = int(update_fields.get('playcount', 0)) + int(movie_duplicate['playCount'])
 
 			if movie_duplicate['resumeTimeInSeconds'] and movie_duplicate['totalTimeInSeconds']:
 				update_fields['resume']			= {
 					'position': int(movie_duplicate['resumeTimeInSeconds']),
 					'total':	int(movie_duplicate['totalTimeInSeconds'])}
- 
 
-
-		#alt_data = list(set(alt_data))
-		#alt_data.sort(key=operator.itemgetter('rank'))
 		with filesystem.save_make_chdir_context(base_path, 'STRMWriterBase.write_alternative'):
 			alt_data = [dict(t) for t in set([tuple(d.iteritems()) for d in alt_data])]
 			STRMWriterBase.write_alternative(strm_path, alt_data)
-		pass
 
 			last_strm_path = movie_duplicate['c22']
 			if last_strm_path != strm_path:
@@ -466,6 +464,7 @@ for movie_duplicate in one_movie_duplicates:
 	log.debug('# ----------------')
 	log.debug('# Get info & move files')
 	for movie in movie_duplicates_list:
+		try:
 			imdbid = movie[4]
 			watched_and_progress[imdbid] = get_info_and_move_files(imdbid)
 		except BaseException as e:
@@ -481,8 +480,9 @@ for movie_duplicate in one_movie_duplicates:
 	from jsonrpc_requests import VideoLibrary	#, JSONRPC
 	#ver = JSONRPC.Version()
 	for path in update_paths:
-		VideoLibrary.Scan(directory=path))
+		VideoLibrary.Scan(directory=path)
 	VideoLibrary.Clean(showdialogs=_debug)
+
 
 	log.debug('# ----------------')
 	log.debug('# Apply watched & progress')
@@ -497,3 +497,4 @@ for movie_duplicate in one_movie_duplicates:
 	log.debug('*'*80)
 	log.debug('* End cleaning movies')
 	log.debug('*'*80)
+
