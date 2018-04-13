@@ -654,9 +654,8 @@ def search_generate(what, imdb, settings, path_out):
 
 if __name__ == '__main__':
 	import filesystem
-	settings = Settings(filesystem.join(filesystem.dirname(__file__), 'test', 'Videos'))
-
-	settings = Settings(r'c:\Users\vd\Videos')
+	test_dir = filesystem.join(filesystem.dirname(__file__), 'test')
+	settings = Settings( filesystem.join(test_dir, 'Videos') )
 	settings.addon_data_path	= filesystem.join(test_dir, 'data')
 	settings.torrent_path		= filesystem.join(test_dir, 'torrents')
 	settings.torrent_player		= 'torrent2http'
@@ -679,9 +678,3 @@ if __name__ == '__main__':
 	with dump_context('rutor.run'):
 		run(settings)
 
-	from backgrounds import clean_movies
-	clean_movies()
-
-	#recheck_torrent_if_need(from_time, settings)
-
-	#search_generate(None, 'tt2948356', settings)
