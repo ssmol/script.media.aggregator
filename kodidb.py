@@ -425,3 +425,15 @@ class MoreRequests(object):
 				    COUNT(uniqueid_value) > 1"""
 		self._log(sql) 
 		return sql
+
+def wait_for_update():
+	try:
+		import xbmc
+		count = 1000
+		while not xbmc.abortRequested and xbmc.getCondVisibility('Library.IsScanningVideo') and count:
+			log.debug('Library Scanning Video - wait')
+			xbmc.sleep(100)
+			count -= 1
+	except:
+		import time
+		time.sleep(1)

@@ -374,6 +374,9 @@ def dt(ss):
 def clean_movies():
 	_debug = False
 
+	from kodidb import wait_for_update
+	wait_for_update()
+
 	log.debug('*'*80)
 	log.debug('* Start cleaning movies')
 	log.debug('*'*80)
@@ -393,8 +396,9 @@ def clean_movies():
 		def _log(s):
 			log.debug(u'    get_info_and_move_files: {}'.format(s))
 
+		api = movieapi.MovieAPI.get_by(imdb_id=imdbid)[0]
+
 		try:
-			api = movieapi.MovieAPI(imdbid)
 			genre = api['genres']
 			if u'мультфильм' in genre:
 				base_path = settings.animation_path()
@@ -449,7 +453,7 @@ def clean_movies():
 				safe_copyfile(last_strm_path, strm_path)
 				safe_copyfile(last_nfo_path, nfo_path)
 
-				update_paths.add(filesystem.dirname(strm_path))
+			update_paths.add(filesystem.dirname(strm_path))
 
 			for movie_duplicate in one_movie_duplicates:
 				cur_strm_path = movie_duplicate['c22']
@@ -478,11 +482,14 @@ def clean_movies():
 	log.debug('# ----------------')
 	log.debug('# Clean & update Video library')
 	from jsonrpc_requests import VideoLibrary	#, JSONRPC
+	from kodidb import wait_for_update
 	#ver = JSONRPC.Version()
 	for path in update_paths:
 		VideoLibrary.Scan(directory=path)
-	VideoLibrary.Clean(showdialogs=_debug)
-
+		wait_for_update()
+ 
+	res = VideoLibrary.Clean(showdialogs=_debug)
+	log.debug(unicode(res))
 
 	log.debug('# ----------------')
 	log.debug('# Apply watched & progress')

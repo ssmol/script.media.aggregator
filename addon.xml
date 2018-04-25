@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.nonfo.aggregator" version="nonfo.40.5" name="Media Agregator Nonfo" provider-name="-=Vd=-">
+<addon id="script.nonfo.aggregator" version="nonfo.40.122" name="Media Agregator Nonfo" provider-name="-=Vd=-">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
     <import addon="plugin.video.yatp" optional="true"/>

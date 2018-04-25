@@ -38,20 +38,20 @@ def write_movie(fulltitle, link, settings, parser, path, skip_nfo_exists=False, 
 		if new_path != path:
 			copy_files(path, new_path, filename)
 
-		from strmwriter import STRMWriter
-		STRMWriter(parser.link()).write(filename, new_path,
-										parser=parser,
-										settings=settings)
-		from nfowriter import NFOWriter
-		NFOWriter(parser, movie_api = parser.movie_api()).write_movie(filename, new_path, skip_nfo_exists=skip_nfo_exists) 
+		with filesystem.save_make_chdir_context(new_path, 'write_movie'):
+			from strmwriter import STRMWriter
+			STRMWriter(parser.link()).write(filename, new_path,
+											parser=parser,
+											settings=settings)
+			from nfowriter import NFOWriter
+			NFOWriter(parser, movie_api = parser.movie_api()).write_movie(filename, new_path, skip_nfo_exists=skip_nfo_exists)
 
-		if download_torrent:
-			from downloader import TorrentDownloader
-			TorrentDownloader(parser.link(), settings.torrents_path(), settings).download()
+			if download_torrent:
+				from downloader import TorrentDownloader
+				TorrentDownloader(parser.link(), settings.torrents_path(), settings).download()
 
-		return filesystem.relpath( filesystem.join(new_path, base.make_fullpath(filename, '.strm')), start=settings.base_path()) 
-	else:
-		return None
+			return filesystem.relpath( filesystem.join(new_path, base.make_fullpath(filename, '.strm')), start=settings.base_path())
+
 
 def get_tmdb_api_key():
 	try:
@@ -555,8 +555,10 @@ class KinopoiskAPI(object):
 		if self.kinopoisk_url and self.soup is None:
 			r = self._http_get(self.kinopoisk_url)
 			if r.status_code == requests.codes.ok:
-				text = base.clean_html(r.text)
+				text = base.clean_html(r.content)
 				self.soup = BeautifulSoup(text, 'html.parser')
+			else:
+				pass
 
 	def title(self):
 		title = None
@@ -1000,6 +1002,26 @@ class TMDB_API(object):
 			except:
 				self.tmdb_data = None
 
+	def title(self):
+		try:
+			if 'title' in self.tmdb_data:
+				return self.tmdb_data['title']
+			if 'name' in self.tmdb_data:
+				return self.tmdb_data['name']
+		except:
+			pass
+		raise AttributeError
+
+	def originaltitle(self):
+		try:
+			if 'original_title' in self.tmdb_data:
+				return self.tmdb_data['original_title']
+			if 'original_name' in self.tmdb_data:
+				return self.tmdb_data['original_name']
+		except:
+			pass
+		raise AttributeError
+
 	def year(self):
 		try:
 			return self.tmdb_data['release_date'].split('-')[0]
@@ -1134,7 +1156,12 @@ class MovieAPI(object):
 		if imdb_id or kinopoisk:
 			if not settings or settings.use_worldart:
 				if not orig:
-					orig = self.originaltitle()
+					for api in self.providers:
+						try:
+							orig = api.originaltitle()
+							break
+						except:
+							pass
 				try:
 					self.worldartapi = world_art(orig, imdbid=imdb_id, kp_url=kinopoisk)
 					self.providers.append(self.worldartapi)
@@ -1198,6 +1225,9 @@ class MovieAPI(object):
 
 	def ru(self, name):
 		def ru_text(text):
+			if not text:
+				return False
+
 			r = 0
 			nr = 0
 			for ch in text:
