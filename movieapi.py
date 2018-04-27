@@ -952,67 +952,67 @@ class TMDB_API(object):
 		
 	@staticmethod
 	def boev(page=1):
-		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=28&language=ru'
+		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=28&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url)
 		
 	@staticmethod
 	def vest(page=1):
-		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=37&language=ru'
+		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=37&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url)
 		
 	@staticmethod
 	def voen(page=1):
-		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=10752&language=ru'
+		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=10752&&without_genres=16language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url)
 		
 	@staticmethod
 	def detek(page=1):
-		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=9648&language=ru'
+		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=9648&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url)
 		
 	@staticmethod
 	def dok(page=1):
-		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=99&language=ru'
+		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=99&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url)
 		
 	@staticmethod
 	def dram(page=1):
-		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=18&language=ru'
+		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=18&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url)
 		
 	@staticmethod
 	def ist(page=1):
-		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=36&language=ru'
+		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=36&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url)
 		
 	@staticmethod
 	def kom(page=1):
-		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=35&language=ru'
+		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=35&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url)
 		
 	@staticmethod
 	def krim(page=1):
-		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=80&language=ru'
+		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=80&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url)
 		
 	@staticmethod
-	def mel(page=1):
-		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=10749&language=ru'
+	def melo(page=1):
+		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=10749&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url)
 		
 	@staticmethod
 	def muz(page=1):
-		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=10402&language=ru'
+		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=10402&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url)
 		
@@ -1024,43 +1024,43 @@ class TMDB_API(object):
 		
 	@staticmethod
 	def prik(page=1):
-		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=12&language=ru'
+		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=12&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url)
 		
 	@staticmethod
 	def sem(page=1):
-		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=10751&language=ru'
+		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=10751&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url)
 		
 	@staticmethod
 	def tel(page=1):
-		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=10770&language=ru'
+		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=10770&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url)
 		
 	@staticmethod
 	def tril(page=1):
-		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=53&language=ru'
+		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=53&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url)
 		
 	@staticmethod
 	def uzh(page=1):
-		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=27&language=ru'
+		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=27&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url)
 		
 	@staticmethod
 	def fan(page=1):
-		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=878&language=ru'
+		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=878&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url)
 		
 	@staticmethod
 	def fen(page=1):
-		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=14&language=ru'
+		url = 'http://%s/3/discover/movie?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=14&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url)
 
@@ -1096,13 +1096,13 @@ class TMDB_API(object):
 		
 	@staticmethod
 	def boev_tv(page=1):
-		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=10759&language=ru'
+		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=10759&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url, 'tv')
 		
 	@staticmethod
 	def voen_tv(page=1):
-		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=10768&language=ru'
+		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=10768&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url, 'tv')
 		
@@ -1114,67 +1114,67 @@ class TMDB_API(object):
 		
 	@staticmethod
 	def myl_tv(page=1):
-		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=10766&language=ru'
+		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=10766&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url, 'tv')
 		
 	@staticmethod
 	def fen_tv(page=1):
-		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=10765&language=ru'
+		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=10765&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url, 'tv')
 		
 	@staticmethod
 	def nov_tv(page=1):
-		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=10763&language=ru'
+		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=10763&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url, 'tv')
 		
 	@staticmethod
 	def real_tv(page=1):
-		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=10764&language=ru'
+		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=10764&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url, 'tv')
 		
 	@staticmethod
 	def tok_tv(page=1):
-		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=10767&language=ru'
+		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=10767&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url, 'tv')
 		
 	@staticmethod
 	def vest_tv(page=1):
-		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=37&language=ru'
+		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=37&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url, 'tv')
 		
 	@staticmethod
 	def detek_tv(page=1):
-		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=9648&language=ru'
+		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=9648&&without_genres=16language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url, 'tv')
 		
 	@staticmethod
 	def dok_tv(page=1):
-		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=99&language=ru'
+		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=99&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url, 'tv')
 		
 	@staticmethod
 	def dram_tv(page=1):
-		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=18&language=ru'
+		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=18&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url, 'tv')
 		
 	@staticmethod
 	def kom_tv(page=1):
-		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=35&language=ru'
+		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=35&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url, 'tv')
 		
 	@staticmethod
 	def krim_tv(page=1):
-		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=80&language=ru'
+		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=80&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url, 'tv')
 		
@@ -1186,7 +1186,7 @@ class TMDB_API(object):
 		
 	@staticmethod
 	def sem_tv(page=1):
-		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=10751&language=ru'
+		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=10751&without_genres=16&language=ru'
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url, 'tv')
 
