@@ -619,12 +619,12 @@ def check_sources(settings):
 
 class dialog_action_case:
 	generate = 0
-	sources = 1
-	settings = 2
-	search = 3
-	catalog = 4
-	medialibrary = 5
-	exit = 6
+	sources = 10
+	settings = 1
+	search = 2
+	catalog = 3
+	medialibrary = 40
+	exit = 5
 
 
 def dialog_action(action, settings, params=None):
@@ -694,10 +694,51 @@ def dialog_action(action, settings, params=None):
 
 		listing = [
 
+			('razd', u'----Фильмы----'),
+			('upcoming', u'Ожидаемые'),
+			('now_playing', u'Новинки'),
 			('popular', u'Популярные'),
 			('top_rated', u'Рейтинговые'),
+			('boev', u'Боевик'),
+			('vest', u'Вестерн'),
+			('voen', u'Военный'),
+			('detek', u'Детектив'),
+			('dok', u'Документальный'),
+			('dram', u'Драмма'),
+			('ist', u'История'),
+			('kom', u'Комедия'),
+			('krim', u'Криминал'),
+			('melo', u'Мелодрамма'),
+			('muz', u'Музыка'),
+			('mult', u'Мультфильм'),
+			('prik', u'Приключения'),
+			('sem', u'Семейный'),
+			('tel', u'Телевизионный'),
+			('tril', u'Триллер'),
+			('uzh', u'Ужасы'),
+			('fan', u'Фантастика'),
+			('fen', u'Фэнтези'),
+			('razd_tv', u'----Сериалы----'),
+			('on_the_air', u'Сериалы в эфире'),
+			('airing_today', u'Сериалы сегодня'),		
 			('popular_tv', u'Популярные сериалы'),
-			('top_rated_tv', u'Рейтинговые сериалы')
+			('top_rated_tv', u'Рейтинговые сериалы'),		
+			('boev_tv', u'Боевик и приключения'),
+			('voen_tv', u'Война и политика'),
+			('det_tv', u'Детский'),		
+			('myl_tv', u'Мыльная опера'),
+			('fen_tv', u'НФ и фэнтези'),
+			('nov_tv', u'Новости'),		
+			('real_tv', u'Реалити шоу'),
+			('tok_tv', u'Ток шоу'),
+			('vest_tv', u'Вестерн'),
+			('detek_tv', u'Детектив'),
+			('dok_tv', u'Документальный'),
+			('dram_tv', u'Драмма'),		
+			('kom_tv', u'Комедия'),
+			('krim_tv', u'Криминал'),
+			('mult_tv', u'Мультфильм'),		
+			('sem_tv', u'Семейный')
 		]
 
 		if filesystem.exists('special://home/addons/plugin.video.shikimori.2'):
@@ -821,19 +862,19 @@ def force_library_update(settings, params):
 
 
 menu_items = [u'Генерировать .strm и .nonfo файлы',
-				u'Создать источники',
+#				u'Создать источники',
 				u'Настройки',
 				u'Поиск',
-				u'Каталог',
-				u'Медиатека'
+				u'Каталог'
+#				u'Медиатека'
 ]
 
 menu_actions = ['generate',
-		        'sources',
+#		        'sources',
 				'settings',
 				'search',
-				'catalog',
-				'medialibrary'
+				'catalog'
+#				'medialibrary'
 ]
 
 
@@ -923,12 +964,92 @@ def action_show_category(params):
 	from movieapi import TMDB_API
 	if params.get('category') == 'popular':
 		show_list(TMDB_API.popular(page))
+	if params.get('category') == 'upcoming':
+		show_list(TMDB_API.upcoming(page))
+	if params.get('category') == 'now_playing':
+		show_list(TMDB_API.now_playing(page))
 	if params.get('category') == 'top_rated':
 		show_list(TMDB_API.top_rated(page))
+	if params.get('category') == 'boev':
+		show_list(TMDB_API.boev(page))
+	if params.get('category') == 'vest':
+		show_list(TMDB_API.vest(page))
+	if params.get('category') == 'voen':
+		show_list(TMDB_API.voen(page))
+	if params.get('category') == 'detek':
+		show_list(TMDB_API.detek(page))
+	if params.get('category') == 'dok':
+		show_list(TMDB_API.dok(page))
+	if params.get('category') == 'dram':
+		show_list(TMDB_API.dram(page))
+	if params.get('category') == 'ist':
+		show_list(TMDB_API.ist(page))
+	if params.get('category') == 'kom':
+		show_list(TMDB_API.kom(page))
+	if params.get('category') == 'krim':
+		show_list(TMDB_API.krim(page))
+	if params.get('category') == 'melo':
+		show_list(TMDB_API.melo(page))
+	if params.get('category') == 'muz':
+		show_list(TMDB_API.muz(page))
+	if params.get('category') == 'mult':
+		show_list(TMDB_API.mult(page))
+	if params.get('category') == 'prik':
+		show_list(TMDB_API.prik(page))
+	if params.get('category') == 'sem':
+		show_list(TMDB_API.sem(page))
+	if params.get('category') == 'tel':
+		show_list(TMDB_API.tel(page))
+	if params.get('category') == 'tril':
+		show_list(TMDB_API.tril(page))
+	if params.get('category') == 'uzh':
+		show_list(TMDB_API.uzh(page))
+	if params.get('category') == 'fan':
+		show_list(TMDB_API.fan(page))
+	if params.get('category') == 'fen':
+		show_list(TMDB_API.fen(page))
 	if params.get('category') == 'popular_tv':
 		show_list(TMDB_API.popular_tv(page))
+	if params.get('category') == 'on_the_air':
+		show_list(TMDB_API.on_the_air(page))
+	if params.get('category') == 'airing_today':
+		show_list(TMDB_API.airing_today(page))
 	if params.get('category') == 'top_rated_tv':
 		show_list(TMDB_API.top_rated_tv(page))
+
+	if params.get('category') == 'boev_tv':
+		show_list(TMDB_API.boev_tv(page))
+	if params.get('category') == 'voen_tv':
+		show_list(TMDB_API.voen_tv(page))
+	if params.get('category') == 'det_tv':
+		show_list(TMDB_API.det_tv(page))
+	if params.get('category') == 'myl_tv':
+		show_list(TMDB_API.myl_tv(page))
+	if params.get('category') == 'fen_tv':
+		show_list(TMDB_API.fen_tv(page))
+	if params.get('category') == 'nov_tv':
+		show_list(TMDB_API.nov_tv(page))
+	if params.get('category') == 'real_tv':
+		show_list(TMDB_API.real_tv(page))
+	if params.get('category') == 'tok_tv':
+		show_list(TMDB_API.tok_tv(page))
+	if params.get('category') == 'vest_tv':
+		show_list(TMDB_API.vest_tv(page))
+	if params.get('category') == 'detek_tv':
+		show_list(TMDB_API.detek_tv(page))
+	if params.get('category') == 'dok_tv':
+		show_list(TMDB_API.dok_tv(page))
+	if params.get('category') == 'dram_tv':
+		show_list(TMDB_API.dram_tv(page))
+	if params.get('category') == 'kom_tv':
+		show_list(TMDB_API.kom_tv(page))
+	if params.get('category') == 'krim_tv':
+		show_list(TMDB_API.krim_tv(page))
+	if params.get('category') == 'mult_tv':
+		show_list(TMDB_API.mult_tv(page))
+	if params.get('category') == 'sem_tv':
+		show_list(TMDB_API.sem_tv(page))
+
 	if params.get('category') == 'anime':
 		uri = 'plugin://plugin.video.shikimori.2/'
 		xbmc.executebuiltin(b'Container.Update(\"%s\")' % uri)
