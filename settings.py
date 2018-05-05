@@ -125,6 +125,7 @@ class Settings(object):
 		self.rutor_nosd				= rutor_nosd
 
 		self.progress_dialog		= FakeProgressDlg()
+		self.update_paths			= set()
 
 		self.kinohd_enable			= True
 		self.kinohd_4k				= True

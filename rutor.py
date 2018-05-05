@@ -678,3 +678,7 @@ if __name__ == '__main__':
 	with dump_context('rutor.run'):
 		run(settings)
 
+	#recheck_torrent_if_need(from_time, settings)
+	search_generate(None, 'tt2948356', settings, path_out)
+
+pass
