@@ -85,18 +85,18 @@ def exists(path):
 		import stat
 		if stat.S_ISDIR(xbmcvfs.Stat(xbmcvfs_path(path)).st_mode()):
 			return True
-	try:
-		if path.startswith('smb://') and os.name == 'nt':
-			return os_path_exists(path)
-		elif '://' in path or ( not _is_abs_path(path) and '://' in _cwd ):
-			return xbmcvfs_exists(path)
+		return xbmcvfs.exists(xbmcvfs_path(path))
 
 	def os_path_exists(path):
 		if path.startswith('smb://') and os.name == 'nt':
 			path = path.replace('smb://', r'\\').replace('/', '\\')
 		return os.path.exists(get_path(path))
 
-			return xbmcvfs.exists(xbmcvfs_path(path))
+	try:
+		if path.startswith('smb://') and os.name == 'nt':
+			return os_path_exists(path)
+		elif '://' in path or ( not _is_abs_path(path) and '://' in _cwd ):
+			return xbmcvfs_exists(path)
 		else:
 			return os.path.exists(get_path(path))
 	except BaseException as e:
