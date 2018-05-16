@@ -737,8 +737,17 @@ def dialog_action(action, settings, params=None):
 			('dram_tv', u'Драмма'),		
 			('kom_tv', u'Комедия'),
 			('krim_tv', u'Криминал'),
-			('mult_tv', u'Мультфильм'),		
+			('mult_tv', u'Мультфильм'),	
+			('action_tv', u'Боевик и приключения'),
+			('ist_tv', u'История'),
+			('prikl_tv', u'Приключения'),		
+#			('boevpr', u'Боевик и приключения'),
+			('mel_tv', u'Мелодрамма'),
+			('fent_tv', u'Фэнтези'),
+			('mel_tv', u'Ужасы'),
+			('fant_tv', u'Фантастика'),	
 			('sem_tv', u'Семейный')
+
 		]
 
 		if filesystem.exists('special://home/addons/plugin.video.shikimori.2'):
@@ -1049,6 +1058,22 @@ def action_show_category(params):
 		show_list(TMDB_API.mult_tv(page))
 	if params.get('category') == 'sem_tv':
 		show_list(TMDB_API.sem_tv(page))
+	if params.get('category') == 'voe_tv':
+		show_list(TMDB_API.voe_tv(page))
+	if params.get('category') == 'ist_tv':
+		show_list(TMDB_API.ist_tv(page))
+	if params.get('category') == 'prikl_tv':
+		show_list(TMDB_API.prikl_tv(page))
+	if params.get('category') == 'mel_tv':
+		show_list(TMDB_API.mel_tv(page))
+	if params.get('category') == 'fent_tv':
+		show_list(TMDB_API.fent_tv(page))
+	if params.get('category') == 'uzhas_tv':
+		show_list(TMDB_API.uzhas_tv(page))
+	if params.get('category') == 'fant_tv':
+		show_list(TMDB_API.fant_tv(page))
+	if params.get('category') == 'action_tv':
+		show_list(TMDB_API.action_tv(page))
 
 	if params.get('category') == 'anime':
 		uri = 'plugin://plugin.video.shikimori.2/'

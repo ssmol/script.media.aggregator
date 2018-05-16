@@ -1191,6 +1191,53 @@ class TMDB_API(object):
 		url += '&page={}'.format(page)
 		return TMDB_API.tmdb_query(url, 'tv')
 
+	@staticmethod
+	def ist_tv(page=1):
+		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=36&without_genres=16&language=ru'
+		url += '&page={}'.format(page)
+		return TMDB_API.tmdb_query(url, 'tv')
+		
+	@staticmethod
+	def voe_tv(page=1):
+		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=10752&without_genres=16&language=ru'
+		url += '&page={}'.format(page)
+		return TMDB_API.tmdb_query(url, 'tv')
+		
+	@staticmethod
+	def prikl_tv(page=1):
+		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=12&without_genres=16&language=ru'
+		url += '&page={}'.format(page)
+		return TMDB_API.tmdb_query(url, 'tv')
+
+	@staticmethod
+	def mel_tv(page=1):
+		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=10749&without_genres=16&language=ru'
+		url += '&page={}'.format(page)
+		return TMDB_API.tmdb_query(url, 'tv')
+		
+	@staticmethod
+	def fent_tv(page=1):
+		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=14&without_genres=16&language=ru'
+		url += '&page={}'.format(page)
+		return TMDB_API.tmdb_query(url, 'tv')
+		
+	@staticmethod
+	def uzhas_tv(page=1):
+		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=27&without_genres=16&language=ru'
+		url += '&page={}'.format(page)
+		return TMDB_API.tmdb_query(url, 'tv')
+		
+	@staticmethod
+	def fant_tv(page=1):
+		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=878&without_genres=16&language=ru'
+		url += '&page={}'.format(page)
+		return TMDB_API.tmdb_query(url, 'tv')
+		
+	@staticmethod
+	def action_tv(page=1):
+		url = 'http://%s/3/discover/tv?api_key=' % TMDB_API.tmdb_api_key['host'] + TMDB_API.tmdb_api_key['key'] + '&with_genres=10759&without_genres=16&language=ru'
+		url += '&page={}'.format(page)
+		return TMDB_API.tmdb_query(url, 'tv')
 
 	@staticmethod
 	def show_similar_t(page, tmdb_id, type):
